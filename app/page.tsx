@@ -134,7 +134,7 @@ const translations: Translations = {
     howItWorks1: '1. Describe your song – mood, genre, instruments, tempo, vibe.',
     howItWorks2: '2. Click “Generate Song” – we send your prompt securely to the AI music engine.',
     howItWorks3: '3. Listen & download – preview your track and save it for personal use.',
-    howItWorks4: '4. Add your own Suno API key to use your own credits.',
+    howItWorks4: '4. (Optional) Add your own Suno API key to use your own credits.',
     showTips: 'Show Prompt Tips & Best Practices',
     hideTips: 'Hide Prompt Tips & Best Practices',
     bestPractices: '✅ Best Practices:',
