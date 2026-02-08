@@ -722,8 +722,8 @@ export default function Home() {
                 {/* Left column - Best Practices and Avoid */}
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
-                      <span className="text-green-500">✅</span> {t.bestPractices}
+                    <h3 className="text-sm font-bold text-gray-800 mb-3">
+                      {t.bestPractices}
                     </h3>
                     <ul className="text-sm text-gray-700 space-y-2 ml-6">
                       <li>• {t.tips.practice1}</li>
@@ -734,8 +734,8 @@ export default function Home() {
                   </div>
 
                   <div>
-                    <h3 className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
-                      <span className="text-red-500">❌</span> {t.avoid}
+                    <h3 className="text-sm font-bold text-gray-800 mb-3">
+                      {t.avoid}
                     </h3>
                     <ul className="text-sm text-gray-700 space-y-2 ml-6">
                       <li>• {t.tips.avoid1}</li>
@@ -988,12 +988,12 @@ export default function Home() {
             {t.generationTime} ⏱️
           </p>
 
-          {/* Generate button with muted blue design - no glow */}
+          {/* Generate button with custom muted color palette */}
           <div className="relative group">
             <button
               onClick={generateSong}
               disabled={loading}
-              className="hidden sm:block relative w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-5 sm:py-6 px-6 sm:px-8 rounded-2xl font-bold text-base sm:text-lg transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:from-gray-600 disabled:to-gray-700 touch-manipulation"
+              className="hidden sm:block relative w-full bg-[#5B5CF6] hover:bg-[#8B8CFB] text-white py-5 sm:py-6 px-6 sm:px-8 rounded-2xl font-bold text-base sm:text-lg transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:bg-[#6B7280] touch-manipulation"
               aria-label={loading ? 'Generating song, please wait' : 'Generate AI music from your description'}
               aria-describedby="generation-time"
             >
@@ -1035,8 +1035,8 @@ export default function Home() {
           )}
 
           {audioUrl && (
-            <div className="p-6 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 border-2 border-purple-300 rounded-xl space-y-4 shadow-lg animate-pulse">
-              <p className="text-purple-900 font-bold text-xl text-center bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">{songTitle}</p>
+            <div className="p-6 bg-[#C7C9FF] border border-[#E5E7EB] rounded-xl space-y-4 shadow-lg">
+              <p className="text-[#1F2937] font-bold text-xl text-center">{songTitle}</p>
               <audio controls className="w-full" src={audioUrl}>
                 Your browser does not support audio playback.
               </audio>
@@ -1044,7 +1044,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-0 sm:rounded-lg sm:overflow-hidden sm:shadow-md">
                 <button
                   onClick={downloadSong}
-                  className="flex-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white py-3 font-bold hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 transition flex items-center justify-center space-x-2 rounded-lg sm:rounded-none shadow-md sm:shadow-none transform hover:scale-105"
+                  className="flex-1 bg-[#5B5CF6] hover:bg-[#8B8CFB] text-white py-3 font-bold transition flex items-center justify-center space-x-2 rounded-lg sm:rounded-none shadow-md sm:shadow-none transform hover:scale-105"
                 >
                   <span>🎵</span>
                   <span>{language === 'en' ? 'Download Song' : 'Descargar Canción'}</span>
@@ -1058,14 +1058,14 @@ export default function Home() {
                           lyricsDiv.classList.toggle('hidden');
                         }
                       }}
-                      className="flex-1 bg-gradient-to-r from-green-500 via-blue-500 to-indigo-600 text-white py-3 font-bold hover:from-green-600 hover:via-blue-600 hover:to-indigo-700 transition flex items-center justify-center space-x-2 rounded-lg sm:rounded-none shadow-md sm:shadow-none transform hover:scale-105"
+                      className="flex-1 bg-[#8B8CFB] hover:bg-[#C7C9FF] text-[#1F2937] py-3 font-bold transition flex items-center justify-center space-x-2 rounded-lg sm:rounded-none shadow-md sm:shadow-none transform hover:scale-105"
                     >
                       <span>👁️</span>
                       <span>{language === 'en' ? 'View Lyrics' : 'Ver Letra'}</span>
                     </button>
                     <button
                       onClick={downloadLyrics}
-                      className="flex-1 bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 text-white py-3 font-bold hover:from-yellow-600 hover:via-orange-600 hover:to-red-600 transition flex items-center justify-center space-x-2 rounded-lg sm:rounded-none shadow-md sm:shadow-none transform hover:scale-105"
+                      className="flex-1 bg-[#C7C9FF] hover:bg-[#E5E7EB] text-[#1F2937] py-3 font-bold transition flex items-center justify-center space-x-2 rounded-lg sm:rounded-none shadow-md sm:shadow-none transform hover:scale-105"
                     >
                       <span>📝</span>
                       <span>{language === 'en' ? 'Download Lyrics' : 'Descargar Letra'}</span>
@@ -1074,9 +1074,9 @@ export default function Home() {
                 )}
               </div>
               {lyrics && (
-                <div id="lyrics-display" className="hidden p-4 bg-gradient-to-br from-white via-purple-50 to-pink-50 border-2 border-purple-300 rounded-xl shadow-inner">
-                  <p className="text-sm font-bold text-purple-800 mb-2 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">📝 {language === 'en' ? 'Lyrics' : 'Letra'}</p>
-                  <pre className="text-xs text-gray-800 whitespace-pre-wrap font-sans bg-white/50 p-3 rounded-lg">{lyrics}</pre>
+                <div id="lyrics-display" className="hidden p-4 bg-white border border-[#E5E7EB] rounded-xl shadow-inner">
+                  <p className="text-sm font-bold text-[#1F2937] mb-2">📝 {language === 'en' ? 'Lyrics' : 'Letra'}</p>
+                  <pre className="text-xs text-[#6B7280] whitespace-pre-wrap font-sans bg-[#C7C9FF]/30 p-3 rounded-lg">{lyrics}</pre>
                 </div>
               )}
             </div>
@@ -1113,7 +1113,7 @@ export default function Home() {
               <button
                 onClick={generateSong}
                 disabled={loading}
-                className="relative w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-4 px-6 rounded-2xl font-bold text-base disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:from-gray-600 disabled:to-gray-700 transition-all transform hover:scale-[1.02] touch-manipulation min-h-[56px]"
+                className="relative w-full bg-[#5B5CF6] hover:bg-[#8B8CFB] text-white py-4 px-6 rounded-2xl font-bold text-base disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:bg-[#6B7280] transition-all transform hover:scale-[1.02] touch-manipulation min-h-[56px]"
               >
                 {loading ? (
                   <span className="flex items-center justify-center gap-2">
