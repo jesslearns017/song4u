@@ -495,18 +495,18 @@ export default function Home() {
   };
 
   return (
-    <main className={`min-h-screen bg-gradient-to-br ${loading ? 'from-blue-800 via-purple-800 to-pink-800' : 'from-slate-900 via-purple-900 to-slate-900'} flex items-center justify-center p-4 sm:p-6 relative overflow-hidden transition-all duration-1000`}>
+    <main className={`min-h-screen bg-gradient-to-br ${loading ? 'from-blue-700 via-purple-700 to-pink-700 animate-pulse' : 'from-slate-900 via-purple-900 to-slate-900'} flex items-center justify-center p-4 sm:p-6 relative overflow-hidden transition-all duration-1000`}>
       {/* Dynamic background that animates during generation */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         {/* Enhanced gradient overlay during generation with more colors */}
-        <div className={`absolute inset-0 bg-gradient-to-t ${loading ? 'from-blue-900/30 via-purple-900/20 to-pink-900/30' : 'from-black/10 to-transparent'} transition-all duration-1000`}></div>
+        <div className={`absolute inset-0 bg-gradient-to-t ${loading ? 'from-blue-800/40 via-purple-800/30 to-pink-800/40 animate-pulse' : 'from-black/10 to-transparent'} transition-all duration-1000`}></div>
         
         {/* Animated geometric shapes - enhanced during generation with more colors */}
-        <div className={`absolute top-20 left-10 w-32 h-32 ${loading ? 'bg-blue-500/15' : 'bg-purple-500/10'} rounded-full ${loading ? 'animate-pulse' : ''} blur-3xl transition-all duration-1000`}></div>
-        <div className={`absolute top-40 right-20 w-24 h-24 ${loading ? 'bg-pink-500/15' : 'bg-blue-500/10'} rounded-full ${loading ? 'animate-bounce' : ''} blur-2xl transition-all duration-1000`}></div>
-        <div className={`absolute bottom-32 left-20 w-40 h-40 ${loading ? 'bg-yellow-500/10' : 'bg-indigo-500/10'} rounded-full ${loading ? 'animate-pulse' : ''} blur-3xl transition-all duration-1000`} style={{animationDelay: loading ? '0.5s' : '0s'}}></div>
-        <div className={`absolute bottom-20 right-10 w-28 h-28 ${loading ? 'bg-green-500/10' : 'bg-purple-500/10'} rounded-full ${loading ? 'animate-bounce' : ''} blur-2xl transition-all duration-1000`} style={{animationDelay: loading ? '1s' : '0s'}}></div>
-        <div className={`absolute top-60 left-1/4 w-20 h-20 ${loading ? 'bg-red-500/10' : 'bg-blue-500/5'} rounded-full ${loading ? 'animate-pulse' : ''} blur-2xl transition-all duration-1000`} style={{animationDelay: loading ? '1.5s' : '0s'}}></div>
+        <div className={`absolute top-20 left-10 w-32 h-32 ${loading ? 'bg-blue-400/25 animate-pulse' : 'bg-purple-500/10'} rounded-full blur-3xl transition-all duration-1000`}></div>
+        <div className={`absolute top-40 right-20 w-24 h-24 ${loading ? 'bg-pink-400/25 animate-bounce' : 'bg-blue-500/10'} rounded-full blur-2xl transition-all duration-1000`}></div>
+        <div className={`absolute bottom-32 left-20 w-40 h-40 ${loading ? 'bg-yellow-400/20 animate-pulse' : 'bg-indigo-500/10'} rounded-full blur-3xl transition-all duration-1000`} style={{animationDelay: loading ? '0.5s' : '0s'}}></div>
+        <div className={`absolute bottom-20 right-10 w-28 h-28 ${loading ? 'bg-green-400/20 animate-bounce' : 'bg-purple-500/10'} rounded-full blur-2xl transition-all duration-1000`} style={{animationDelay: loading ? '1s' : '0s'}}></div>
+        <div className={`absolute top-60 left-1/4 w-20 h-20 ${loading ? 'bg-red-400/20 animate-pulse' : 'bg-blue-500/5'} rounded-full blur-2xl transition-all duration-1000`} style={{animationDelay: loading ? '1.5s' : '0s'}}></div>
         
         {/* Additional animated elements during generation with more colors */}
         {loading && (
@@ -518,15 +518,17 @@ export default function Home() {
             <div className="absolute top-1/4 right-1/4 w-8 h-8 bg-red-400/30 rounded-full animate-pulse" style={{animationDelay: '2.5s'}}></div>
             
             {/* Moving gradient orbs with more colors */}
-            <div className="absolute top-10 left-1/2 w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full opacity-20 animate-pulse"></div>
-            <div className="absolute bottom-10 right-1/2 w-20 h-20 bg-gradient-to-r from-pink-500 to-yellow-500 rounded-full opacity-20 animate-pulse" style={{animationDelay: '0.8s'}}></div>
-            <div className="absolute top-1/3 left-1/3 w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full opacity-20 animate-pulse" style={{animationDelay: '1.2s'}}></div>
+            <div className="absolute top-10 left-1/2 w-16 h-16 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-40 animate-pulse"></div>
+            <div className="absolute bottom-10 right-1/2 w-20 h-20 bg-gradient-to-r from-pink-400 to-yellow-400 rounded-full opacity-40 animate-pulse" style={{animationDelay: '0.8s'}}></div>
+            <div className="absolute top-1/3 left-1/3 w-12 h-12 bg-gradient-to-r from-green-400 to-blue-400 rounded-full opacity-40 animate-pulse" style={{animationDelay: '1.2s'}}></div>
             
             {/* Wave-like animation with more colors */}
             <div className="absolute inset-0">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/10 to-transparent animate-pulse"></div>
-              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-pink-500/10 to-transparent animate-pulse" style={{animationDelay: '1s'}}></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-transparent via-yellow-500/5 to-transparent animate-pulse" style={{animationDelay: '2s'}}></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/20 to-transparent animate-pulse"></div>
+              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-pink-400/20 to-transparent animate-pulse" style={{animationDelay: '1s'}}></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-transparent via-yellow-400/15 to-transparent animate-pulse" style={{animationDelay: '2s'}}></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-green-400/15 to-transparent animate-pulse" style={{animationDelay: '2.5s'}}></div>
+              <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-red-400/15 to-transparent animate-pulse" style={{animationDelay: '3s'}}></div>
             </div>
           </>
         )}
@@ -694,7 +696,7 @@ export default function Home() {
         </details>
 
 
-        <div className="mb-8">
+        <div className="mb-8" id="tips-section">
           <button
             onClick={() => setShowTips(!showTips)}
             className="w-full text-xs text-gray-500 hover:text-gray-700 transition flex items-center justify-center gap-2 py-2 rounded-lg hover:bg-gray-50"
@@ -901,7 +903,14 @@ export default function Home() {
               {/* Examples button */}
               <button
                 type="button"
-                onClick={() => setShowTips(true)}
+                onClick={() => {
+                  setShowTips(true);
+                  // Scroll to tips section
+                  const tipsElement = document.getElementById('tips-section');
+                  if (tipsElement) {
+                    tipsElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  }
+                }}
                 className="px-3 py-1.5 rounded-full bg-purple-100 border border-purple-300 text-xs font-semibold text-purple-700 hover:bg-purple-200 transition shadow-sm whitespace-nowrap flex-shrink-0"
               >
                 {language === 'en' ? '💡 Examples' : '💡 Ejemplos'}
