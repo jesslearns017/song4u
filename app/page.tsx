@@ -644,12 +644,12 @@ export default function Home() {
         </div>
 
         {/* Clean hero section without music icons */}
-        <div className="mb-8 sm:mb-12 text-center">
+        <div className="mb-6 sm:mb-8 text-center">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-purple-800 via-indigo-800 to-blue-800 bg-clip-text text-transparent text-center mb-3 leading-tight">
             Songs4u
           </h1>
           <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 font-medium text-center">
-            AI Music Generator
+            Music Generator
           </p>
           <div className="mt-4 flex items-center justify-center gap-2">
             <div className="h-1 w-8 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full"></div>
@@ -667,19 +667,19 @@ export default function Home() {
           <div className="mt-3 p-4 bg-gray-50 rounded-lg border border-gray-200 text-left">
             <div className="space-y-2 text-sm text-gray-600">
               <p className="flex items-start gap-2">
-                <span className="text-blue-500 font-bold">1.</span>
+                <span className="text-blue-500 font-bold">•</span>
                 <span>{t.howItWorks1}</span>
               </p>
               <p className="flex items-start gap-2">
-                <span className="text-blue-500 font-bold">2.</span>
+                <span className="text-blue-500 font-bold">•</span>
                 <span>{t.howItWorks2}</span>
               </p>
               <p className="flex items-start gap-2">
-                <span className="text-blue-500 font-bold">3.</span>
+                <span className="text-blue-500 font-bold">•</span>
                 <span>{t.howItWorks3}</span>
               </p>
               <p className="flex items-start gap-2">
-                <span className="text-blue-500 font-bold">4.</span>
+                <span className="text-blue-500 font-bold">•</span>
                 <span>{t.howItWorks4}</span>
               </p>
             </div>
