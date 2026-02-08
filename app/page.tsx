@@ -138,10 +138,10 @@ const translations: Translations = {
     legalDisclaimer: 'Legal notice: Music and lyrics generated here are for personal entertainment purposes only. There is no intention to copy, imitate, or infringe any artist, song, or copyrighted work.',
     generationTime: '⏱️ Generation typically takes 2-4 minutes',
     howItWorksTitle: 'How it works',
-    howItWorks1: '1. Describe your song – mood, genre, instruments, tempo, vibe.',
-    howItWorks2: '2. Click “Generate Song” – we send your prompt securely to the AI music engine.',
-    howItWorks3: '3. Listen & download – preview your track and save it for personal use.',
-    howItWorks4: '4. (Optional) Add your own Suno API key to use your own credits.',
+    howItWorks1: 'Describe your song – mood, genre, instruments, tempo, vibe.',
+    howItWorks2: 'Click "Generate Song" – we send your prompt securely to the AI music engine.',
+    howItWorks3: 'Listen & download – preview your track and save it for personal use.',
+    howItWorks4: '(Optional) Add your own Suno API key to use your own credits.',
     showTips: 'Show Prompt Tips & Best Practices',
     hideTips: 'Hide Prompt Tips & Best Practices',
     bestPractices: '✅ Best Practices:',
@@ -194,10 +194,10 @@ const translations: Translations = {
     legalDisclaimer: 'Aviso legal: La música y letras generadas aquí son solo para fines de entretenimiento personal. No existe intención de copiar, imitar ni infringir a ningún artista, canción u obra protegida por derechos de autor.',
     generationTime: '⏱️ La generación suele tardar 2-4 minutos',
     howItWorksTitle: 'Cómo funciona',
-    howItWorks1: '1. Describe tu canción: estado de ánimo, género, instrumentos, tempo y ambiente.',
-    howItWorks2: '2. Haz clic en “Generar Canción”: enviamos tu prompt de forma segura al motor de música IA.',
-    howItWorks3: '3. Escucha y descarga: cuando esté lista, prévala y guárdala para uso personal.',
-    howItWorks4: '4. (Opcional) Agrega tu propia clave de Suno para usar tus créditos.',
+    howItWorks1: 'Describe tu canción: estado de ánimo, género, instrumentos, tempo y ambiente.',
+    howItWorks2: 'Haz clic en "Generar Canción": enviamos tu prompt de forma segura al motor de música IA.',
+    howItWorks3: 'Escucha y descarga: cuando esté lista, prévala y guárdala para uso personal.',
+    howItWorks4: '(Opcional) Agrega tu propia clave de Suno para usar tus créditos.',
     showTips: 'Mostrar Consejos y Mejores Prácticas',
     hideTips: 'Ocultar Consejos y Mejores Prácticas',
     bestPractices: '✅ Mejores Prácticas:',
@@ -495,39 +495,46 @@ export default function Home() {
   };
 
   return (
-    <main className={`min-h-screen bg-gradient-to-br ${loading ? 'from-purple-900 via-indigo-900 to-blue-900' : 'from-slate-900 via-purple-900 to-slate-900'} flex items-center justify-center p-4 sm:p-6 relative overflow-hidden transition-all duration-1000`}>
+    <main className={`min-h-screen bg-gradient-to-br ${loading ? 'from-blue-800 via-purple-800 to-pink-800' : 'from-slate-900 via-purple-900 to-slate-900'} flex items-center justify-center p-4 sm:p-6 relative overflow-hidden transition-all duration-1000`}>
       {/* Dynamic background that animates during generation */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        {/* Enhanced gradient overlay during generation */}
-        <div className={`absolute inset-0 bg-gradient-to-t ${loading ? 'from-purple-900/30 via-transparent to-blue-900/30' : 'from-black/10 to-transparent'} transition-all duration-1000`}></div>
+        {/* Enhanced gradient overlay during generation with more colors */}
+        <div className={`absolute inset-0 bg-gradient-to-t ${loading ? 'from-blue-900/30 via-purple-900/20 to-pink-900/30' : 'from-black/10 to-transparent'} transition-all duration-1000`}></div>
         
-        {/* Animated geometric shapes - enhanced during generation */}
-        <div className={`absolute top-20 left-10 w-32 h-32 bg-purple-500/10 rounded-full ${loading ? 'animate-pulse blur-3xl' : 'blur-3xl'} transition-all duration-1000`}></div>
-        <div className={`absolute top-40 right-20 w-24 h-24 bg-blue-500/10 rounded-full ${loading ? 'animate-bounce blur-2xl' : 'blur-2xl'} transition-all duration-1000`}></div>
-        <div className={`absolute bottom-32 left-20 w-40 h-40 bg-indigo-500/10 rounded-full ${loading ? 'animate-pulse blur-3xl' : 'blur-3xl'} transition-all duration-1000`} style={{animationDelay: loading ? '0.5s' : '0s'}}></div>
-        <div className={`absolute bottom-20 right-10 w-28 h-28 bg-purple-500/10 rounded-full ${loading ? 'animate-bounce blur-2xl' : 'blur-2xl'} transition-all duration-1000`} style={{animationDelay: loading ? '1s' : '0s'}}></div>
+        {/* Animated geometric shapes - enhanced during generation with more colors */}
+        <div className={`absolute top-20 left-10 w-32 h-32 ${loading ? 'bg-blue-500/15' : 'bg-purple-500/10'} rounded-full ${loading ? 'animate-pulse' : ''} blur-3xl transition-all duration-1000`}></div>
+        <div className={`absolute top-40 right-20 w-24 h-24 ${loading ? 'bg-pink-500/15' : 'bg-blue-500/10'} rounded-full ${loading ? 'animate-bounce' : ''} blur-2xl transition-all duration-1000`}></div>
+        <div className={`absolute bottom-32 left-20 w-40 h-40 ${loading ? 'bg-yellow-500/10' : 'bg-indigo-500/10'} rounded-full ${loading ? 'animate-pulse' : ''} blur-3xl transition-all duration-1000`} style={{animationDelay: loading ? '0.5s' : '0s'}}></div>
+        <div className={`absolute bottom-20 right-10 w-28 h-28 ${loading ? 'bg-green-500/10' : 'bg-purple-500/10'} rounded-full ${loading ? 'animate-bounce' : ''} blur-2xl transition-all duration-1000`} style={{animationDelay: loading ? '1s' : '0s'}}></div>
+        <div className={`absolute top-60 left-1/4 w-20 h-20 ${loading ? 'bg-red-500/10' : 'bg-blue-500/5'} rounded-full ${loading ? 'animate-pulse' : ''} blur-2xl transition-all duration-1000`} style={{animationDelay: loading ? '1.5s' : '0s'}}></div>
         
-        {/* Additional animated elements during generation */}
+        {/* Additional animated elements during generation with more colors */}
         {loading && (
           <>
-            <div className="absolute top-1/4 left-1/4 w-8 h-8 bg-purple-400/30 rounded-full animate-ping"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-12 h-12 bg-blue-400/30 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
-            <div className="absolute top-1/2 left-1/3 w-10 h-10 bg-indigo-400/30 rounded-full animate-ping" style={{animationDelay: '2s'}}></div>
-            <div className="absolute top-1/3 right-1/3 w-6 h-6 bg-pink-400/30 rounded-full animate-ping" style={{animationDelay: '1.5s'}}></div>
+            <div className="absolute top-1/4 left-1/4 w-8 h-8 bg-blue-400/30 rounded-full animate-pulse"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-12 h-12 bg-pink-400/30 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+            <div className="absolute top-1/2 left-1/3 w-10 h-10 bg-yellow-400/30 rounded-full animate-pulse" style={{animationDelay: '2s'}}></div>
+            <div className="absolute top-1/3 right-1/3 w-6 h-6 bg-green-400/30 rounded-full animate-pulse" style={{animationDelay: '1.5s'}}></div>
+            <div className="absolute top-1/4 right-1/4 w-8 h-8 bg-red-400/30 rounded-full animate-pulse" style={{animationDelay: '2.5s'}}></div>
             
-            {/* Moving gradient orbs */}
-            <div className="absolute top-10 left-1/2 w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full opacity-20 animate-pulse"></div>
-            <div className="absolute bottom-10 right-1/2 w-20 h-20 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full opacity-20 animate-pulse" style={{animationDelay: '0.8s'}}></div>
+            {/* Moving gradient orbs with more colors */}
+            <div className="absolute top-10 left-1/2 w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full opacity-20 animate-pulse"></div>
+            <div className="absolute bottom-10 right-1/2 w-20 h-20 bg-gradient-to-r from-pink-500 to-yellow-500 rounded-full opacity-20 animate-pulse" style={{animationDelay: '0.8s'}}></div>
+            <div className="absolute top-1/3 left-1/3 w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full opacity-20 animate-pulse" style={{animationDelay: '1.2s'}}></div>
             
-            {/* Wave-like animation */}
+            {/* Wave-like animation with more colors */}
             <div className="absolute inset-0">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-500/10 to-transparent animate-pulse"></div>
-              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-blue-500/10 to-transparent animate-pulse" style={{animationDelay: '1s'}}></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/10 to-transparent animate-pulse"></div>
+              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-pink-500/10 to-transparent animate-pulse" style={{animationDelay: '1s'}}></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-transparent via-yellow-500/5 to-transparent animate-pulse" style={{animationDelay: '2s'}}></div>
             </div>
           </>
         )}
         
         {/* Subtle animated gradient orbs - always present but enhanced during generation */}
+        <div className={`absolute top-1/4 left-1/4 w-4 h-4 ${loading ? 'bg-blue-400/20' : 'bg-purple-400/20'} rounded-full animate-pulse ${loading ? 'opacity-40' : 'opacity-20'} transition-opacity duration-500`}></div>
+        <div className={`absolute bottom-1/4 right-1/4 w-6 h-6 ${loading ? 'bg-pink-400/20' : 'bg-blue-400/20'} rounded-full animate-pulse ${loading ? 'opacity-40' : 'opacity-20'} transition-opacity duration-500`} style={{animationDelay: '2s'}}></div>
+        <div className={`absolute top-1/2 left-1/3 w-5 h-5 ${loading ? 'bg-yellow-400/20' : 'bg-indigo-400/20'} rounded-full animate-pulse ${loading ? 'opacity-40' : 'opacity-20'} transition-opacity duration-500`} style={{animationDelay: '1s'}}></div>
         <div className={`absolute top-1/4 left-1/4 w-4 h-4 bg-purple-400/20 rounded-full animate-pulse ${loading ? 'opacity-40' : 'opacity-20'} transition-opacity duration-500`}></div>
         <div className={`absolute bottom-1/4 right-1/4 w-6 h-6 bg-blue-400/20 rounded-full animate-pulse ${loading ? 'opacity-40' : 'opacity-20'} transition-opacity duration-500`} style={{animationDelay: '2s'}}></div>
         <div className={`absolute top-1/2 left-1/3 w-5 h-5 bg-indigo-400/20 rounded-full animate-pulse ${loading ? 'opacity-40' : 'opacity-20'} transition-opacity duration-500`} style={{animationDelay: '1s'}}></div>
@@ -644,7 +651,7 @@ export default function Home() {
         </div>
 
         {/* Clean hero section without music icons */}
-        <div className="mb-6 sm:mb-8 text-center">
+        <div className="mb-4 sm:mb-6 text-center">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-purple-800 via-indigo-800 to-blue-800 bg-clip-text text-transparent text-center mb-3 leading-tight">
             Songs4u
           </h1>
@@ -667,19 +674,19 @@ export default function Home() {
           <div className="mt-3 p-4 bg-gray-50 rounded-lg border border-gray-200 text-left">
             <div className="space-y-2 text-sm text-gray-600">
               <p className="flex items-start gap-2">
-                <span className="text-blue-500 font-bold">•</span>
+                <span className="text-blue-500 font-bold">1.</span>
                 <span>{t.howItWorks1}</span>
               </p>
               <p className="flex items-start gap-2">
-                <span className="text-blue-500 font-bold">•</span>
+                <span className="text-blue-500 font-bold">2.</span>
                 <span>{t.howItWorks2}</span>
               </p>
               <p className="flex items-start gap-2">
-                <span className="text-blue-500 font-bold">•</span>
+                <span className="text-blue-500 font-bold">3.</span>
                 <span>{t.howItWorks3}</span>
               </p>
               <p className="flex items-start gap-2">
-                <span className="text-blue-500 font-bold">•</span>
+                <span className="text-blue-500 font-bold">4.</span>
                 <span>{t.howItWorks4}</span>
               </p>
             </div>
@@ -871,14 +878,14 @@ export default function Home() {
                     { label: 'Pop', text: 'Upbeat pop, catchy chorus, bright synths, positive lyrics, 120 BPM.' },
                     { label: 'Dance', text: 'Dance/EDM, energetic beat, big chorus drop, clean pop vocals, festival vibe.' },
                     { label: 'Country', text: 'Modern country, acoustic guitar + light drums, storytelling lyrics, warm chorus.' },
-                    { label: 'Latin', text: 'Latin pop/reggaeton vibe, syncopated rhythm, upbeat, summer feel, catchy hook.' },
+                    { label: 'Soft Music', text: 'Soft music vibe, gentle rhythm, calming feel, smooth melody, relaxing atmosphere.' },
                     { label: 'Worship', text: 'Peaceful worship song with acoustic guitar, heartfelt lyrics, uplifting chorus.' },
                   ]
                 : [
                     { label: 'Pop', text: 'Pop alegre, coro pegajoso, sintetizadores brillantes, letra positiva, 120 BPM.' },
                     { label: 'Dance', text: 'Dance/EDM, ritmo enérgico, gran "drop" en el coro, voces pop limpias, vibra de festival.' },
                     { label: 'Country', text: 'Country moderno, guitarra acústica + percusión suave, letra narrativa, coro cálido.' },
-                    { label: 'Latin', text: 'Vibra de pop latino/reggaetón, ritmo sincopado, animado, sensación de verano, gancho pegajoso.' },
+                    { label: 'Música Suave', text: 'Vibra de música suave, ritmo suave, ambiente tranquilo, melodía relajante, atmósfera pacífica.' },
                     { label: 'Alabanza', text: 'Canción de alabanza tranquila con guitarra acústica, letra sincera y coro inspirador.' },
                   ]
               ).map((tmpl) => (
@@ -923,7 +930,7 @@ export default function Home() {
                   }
                 }}
                 placeholder={currentPlaceholder}
-                className="w-full h-48 sm:h-56 lg:h-64 p-4 sm:p-6 border-2 border-gray-200 rounded-2xl focus:border-purple-500 focus:outline-none focus:ring-4 focus:ring-purple-200/50 resize-y text-base sm:text-lg bg-white/80 backdrop-blur-sm text-gray-800 shadow-lg transition-all duration-300 placeholder-gray-400"
+                className="w-full h-48 sm:h-56 lg:h-64 p-4 sm:p-6 border-2 border-gray-200 rounded-2xl focus:border-purple-500 focus:outline-none focus:ring-4 focus:ring-purple-200/50 resize-y text-sm bg-white/80 backdrop-blur-sm text-gray-800 shadow-lg transition-all duration-300 placeholder-gray-400"
                 disabled={loading}
                 maxLength={500}
                 style={{ fontSize: '16px' }} /* Prevents zoom on iOS */
@@ -931,7 +938,7 @@ export default function Home() {
                 aria-describedby="prompt-help prompt-counter"
                 aria-required="true"
               />
-              <div id="prompt-counter" className={`absolute bottom-4 right-4 text-sm sm:text-base font-bold px-3 py-2 rounded-xl transition-all duration-300 ${
+              <div id="prompt-counter" className={`absolute bottom-4 right-4 text-sm sm:text-xs font-bold px-3 py-2 rounded-xl transition-all duration-300 ${
                 prompt.length > 450 ? 'text-red-600 bg-red-50 border-2 border-red-200 shadow-sm' : 
                 prompt.length > 350 ? 'text-orange-600 bg-orange-50 border-2 border-orange-200 shadow-sm' : 
                 'text-gray-500 bg-gray-50/80 border-2 border-gray-200 backdrop-blur-sm'
@@ -972,13 +979,13 @@ export default function Home() {
             {t.generationTime} ⏱️
           </p>
 
-          {/* Enhanced Generate button with modern gradient design */}
+          {/* Enhanced Generate button with modern blue gradient design */}
           <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-300 blur"></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 rounded-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-300 blur"></div>
             <button
               onClick={generateSong}
               disabled={loading}
-              className="hidden sm:block relative w-full bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 text-white py-5 sm:py-6 px-6 sm:px-8 rounded-2xl font-bold text-base sm:text-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:from-gray-600 disabled:to-gray-700 touch-manipulation"
+              className="hidden sm:block relative w-full bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:via-blue-700 hover:to-blue-800 text-white py-5 sm:py-6 px-6 sm:px-8 rounded-2xl font-bold text-base sm:text-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:from-gray-600 disabled:to-gray-700 touch-manipulation"
               aria-label={loading ? 'Generating song, please wait' : 'Generate AI music from your description'}
               aria-describedby="generation-time"
             >
@@ -1095,11 +1102,11 @@ export default function Home() {
               </div>
             </div>
             <div className="relative group flex-1">
-              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-300 blur"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 rounded-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-300 blur"></div>
               <button
                 onClick={generateSong}
                 disabled={loading}
-                className="relative w-full bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 text-white py-4 px-6 rounded-2xl font-bold text-base disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:from-gray-600 disabled:to-gray-700 shadow-lg transition-all transform hover:scale-[1.02] touch-manipulation min-h-[56px]"
+                className="relative w-full bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:via-blue-700 hover:to-blue-800 text-white py-4 px-6 rounded-2xl font-bold text-base disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:from-gray-600 disabled:to-gray-700 shadow-lg transition-all transform hover:scale-[1.02] touch-manipulation min-h-[56px]"
               >
                 {loading ? (
                   <span className="flex items-center justify-center gap-2">
