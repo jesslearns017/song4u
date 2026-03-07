@@ -7,7 +7,8 @@ A beautiful Next.js application that generates music using the Suno AI API. Simp
 - **AI-Powered Music Generation** - Create songs from text descriptions
 - **Real-time Progress Tracking** - Live updates during song generation (2-4 minutes)
 - **Song History** - Automatically saves your generated songs locally
-- **Download Functionality** - Download your favorite creations
+- **Download Functionality** - Download your songs and lyrics
+- **Lyrics Display** - View and download generated song lyrics
 - **Credits Management** - Check your API credits
 - **Content Moderation** - Built-in validation for appropriate content
 - **Beautiful UI** - Modern, responsive design with animated music notes
@@ -51,7 +52,7 @@ A beautiful Next.js application that generates music using the Suno AI API. Simp
 
 2. **Click "Generate Song"** and wait 2-4 minutes
 
-3. **Listen and download** your AI-generated music!
+3. **Listen and download** your AI-generated music and lyrics!
 
 ## 💡 Prompt Tips
 
@@ -109,9 +110,14 @@ music/
 - Maximum 10-minute timeout with 20 polling attempts
 
 ### Local Storage
-- Automatically saves up to 50 songs
+- Automatically saves up to 50 songs with lyrics
 - Persistent across browser sessions
 - Quick access to your song history
+
+### Lyrics Support
+- Displays generated lyrics below the audio player
+- Download lyrics as a text file
+- Lyrics saved with song history
 
 ### Content Validation
 - Client-side prompt length validation
@@ -129,7 +135,9 @@ Make sure to set the `SUNOAPI_ORG` environment variable in your deployment platf
 
 ## 📄 License
 
-Created with ❤️ by Dr. Lee
+❤️ From Jessie with love ❤️
+
+For family and friends
 
 ## 🤝 Contributing
 

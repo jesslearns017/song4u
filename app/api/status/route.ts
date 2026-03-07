@@ -32,9 +32,11 @@ export async function GET(request: Request) {
     }
 
     const status = checkData.data?.status;
-    const tracks = checkData.data?.response?.sunoData; // FIXED: It's sunoData, not data!
+    const tracks = checkData.data?.response?.sunoData;
     
-    console.log('Parsed status:', status, 'Has tracks:', !!tracks, tracks);
+    // Log full track data to debug lyrics field
+    console.log('Parsed status:', status);
+    console.log('Full track data:', JSON.stringify(tracks?.[0], null, 2));
 
     // Handle SENSITIVE_WORD_ERROR status
     if (status === 'SENSITIVE_WORD_ERROR') {
@@ -45,10 +47,22 @@ export async function GET(request: Request) {
       });
     }
 
+    // Lyrics can be in 'lyric' field or 'prompt' field (when it contains [Verse] markers)
+    let lyrics = null;
+    if (status === 'SUCCESS' && tracks?.[0]) {
+      if (tracks[0].lyric) {
+        lyrics = tracks[0].lyric;
+      } else if (tracks[0].prompt && tracks[0].prompt.includes('[')) {
+        // prompt field contains lyrics when it has verse/chorus markers
+        lyrics = tracks[0].prompt;
+      }
+    }
+
     return NextResponse.json({
       status,
       audioUrl: status === 'SUCCESS' && tracks?.[0]?.audioUrl ? tracks[0].audioUrl : null,
       title: status === 'SUCCESS' && tracks?.[0]?.title ? tracks[0].title : null,
+      lyric: lyrics,
     });
 
   } catch (error) {

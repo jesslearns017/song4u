@@ -41,6 +41,8 @@ interface Translations {
     download: string;
     downloadLyrics: string;
     createdBy: string;
+    footerLine1: string;
+    footerLine2: string;
     longPromptWarning: string;
     enterPrompt: string;
     sensitiveWarning: string;
@@ -95,6 +97,8 @@ interface Translations {
     download: string;
     downloadLyrics: string;
     createdBy: string;
+    footerLine1: string;
+    footerLine2: string;
     longPromptWarning: string;
     enterPrompt: string;
     sensitiveWarning: string;
@@ -127,10 +131,10 @@ const translations: Translations = {
   en: {
     title: 'Songs4u – AI Music Generator',
     subtitle: 'Describe your track and let AI turn it into music.',
-    oneTimeNotice: 'This is a one-time song generator. Please download your song immediately after it is generated. Songs are not stored permanently.',
-    legalDisclaimer: 'Legal notice: Music generated here is for personal entertainment purposes only. There is no intention to copy, imitate, or infringe any artist, song, or copyrighted work.',
+    oneTimeNotice: 'This is a one-time song generator. Please download your song and lyrics immediately after generation. They are not stored permanently.',
+    legalDisclaimer: 'Legal notice: Music and lyrics generated here are for personal entertainment purposes only. There is no intention to copy, imitate, or infringe any artist, song, or copyrighted work.',
     generationTime: '⏱️ Generation typically takes 2-4 minutes',
-    howItWorksTitle: 'How it works (3 steps)',
+    howItWorksTitle: 'How it works',
     howItWorks1: '1. Describe your song – mood, genre, instruments, tempo, vibe.',
     howItWorks2: '2. Click “Generate Song” – we send your prompt securely to the AI music engine.',
     howItWorks3: '3. Listen & download – preview your track and save it for personal use.',
@@ -145,13 +149,15 @@ const translations: Translations = {
     hideHistory: '🎵 Hide Song History',
     yourSongs: 'Your Songs',
     noSongs: 'No songs yet. Generate your first one!',
-    play: '▶️ Play',
+    play: 'Play',
     placeholder: 'A melancholic jazz ballad about coffee shops...',
     generateButton: 'Generate Song',
     generating: 'Creating your song...',
     download: 'Download Song',
     downloadLyrics: 'Download Lyrics (if available)',
     createdBy: 'Created by Jessie, with guidance from Dr. Lee',
+    footerLine1: '❤️ From Jessie with love ❤️',
+    footerLine2: 'For family and friends',
     longPromptWarning: '⚠️ Long prompts may have issues',
     enterPrompt: 'Please enter a song idea',
     sensitiveWarning: '⚠️ Warning: Your prompt may contain sensitive content that could be rejected. Consider using more neutral language.',
@@ -181,10 +187,10 @@ const translations: Translations = {
   es: {
     title: 'Songs4u – Generador de Música IA',
     subtitle: 'Describe tu pista y deja que la IA la convierta en música.',
-    oneTimeNotice: 'Este es un generador de canciones de uso puntual. Descarga tu canción inmediatamente después de generarla. Las canciones no se almacenan de forma permanente.',
-    legalDisclaimer: 'Aviso legal: La música generada aquí es solo para fines de entretenimiento personal. No existe intención de copiar, imitar ni infringir a ningún artista, canción u obra protegida por derechos de autor.',
+    oneTimeNotice: 'Este es un generador de canciones de uso puntual. Descarga tu canción y letra inmediatamente después de generarla. No se almacenan de forma permanente.',
+    legalDisclaimer: 'Aviso legal: La música y letras generadas aquí son solo para fines de entretenimiento personal. No existe intención de copiar, imitar ni infringir a ningún artista, canción u obra protegida por derechos de autor.',
     generationTime: '⏱️ La generación suele tardar 2-4 minutos',
-    howItWorksTitle: 'Cómo funciona (3 pasos)',
+    howItWorksTitle: 'Cómo funciona',
     howItWorks1: '1. Describe tu canción: estado de ánimo, género, instrumentos, tempo y ambiente.',
     howItWorks2: '2. Haz clic en “Generar Canción”: enviamos tu prompt de forma segura al motor de música IA.',
     howItWorks3: '3. Escucha y descarga: cuando esté lista, prévala y guárdala para uso personal.',
@@ -199,13 +205,15 @@ const translations: Translations = {
     hideHistory: '🎵 Ocultar Historial',
     yourSongs: 'Tus Canciones',
     noSongs: '¡Aún no hay canciones. Genera tu primera!',
-    play: '▶️ Reproducir',
+    play: 'Reproducir',
     placeholder: 'Una balada de jazz melancólica sobre cafeterías...',
     generateButton: 'Generar Canción',
     generating: 'Creando tu canción...',
     download: 'Descargar Canción',
     downloadLyrics: 'Descargar Letra (si disponible)',
     createdBy: 'Creado por Jessie, con la guía del Dr. Lee',
+    footerLine1: '❤️ De parte de Jessie ❤️',
+    footerLine2: 'Para familia y amigos',
     longPromptWarning: '⚠️ Los prompts largos pueden tener problemas',
     enterPrompt: 'Por favor ingresa una idea de canción',
     sensitiveWarning: '⚠️ Advertencia: Tu prompt puede contener contenido sensible que podría ser rechazado. Considera usar un lenguaje más neutral.',
@@ -311,6 +319,12 @@ export default function Home() {
           setLyrics(data.lyric || '');
           setStatusMessage(t.songReady);
           setLoading(false);
+
+          // Alert user that song is ready
+          const alertMessage = language === 'en' 
+            ? `🎵 Your song "${data.title || 'Your Song'}" is ready!` 
+            : `🎵 ¡Tu canción "${data.title || 'Tu Canción'}" está lista!`;
+          alert(alertMessage);
 
           // Save to localStorage
           const song: Song = {
@@ -443,7 +457,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 flex items-center justify-center p-4 relative overflow-hidden">
+    <main className="min-h-screen bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50 flex items-center justify-center p-4 relative overflow-hidden">
       {/* Animated Music Notes Background (music-only theme) */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Edge music icons (corners and mid-sides) */}
@@ -657,7 +671,7 @@ export default function Home() {
                           setShowSongs(false);
                           window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
                         }}
-                        className="flex-1 min-w-[100px] px-3 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs rounded-lg hover:from-purple-600 hover:to-pink-600 transition shadow-sm font-semibold"
+                        className="flex-1 min-w-[80px] px-3 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs rounded-lg hover:from-purple-600 hover:to-pink-600 transition shadow-sm font-semibold"
                       >
                         ▶️ {t.play}
                       </button>
@@ -667,7 +681,7 @@ export default function Home() {
                           setShowSongs(false);
                           window.scrollTo({ top: 0, behavior: 'smooth' });
                         }}
-                        className="flex-1 min-w-[100px] px-3 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs rounded-lg hover:from-blue-600 hover:to-cyan-600 transition shadow-sm font-semibold"
+                        className="flex-1 min-w-[80px] px-3 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs rounded-lg hover:from-blue-600 hover:to-cyan-600 transition shadow-sm font-semibold"
                       >
                         ✏️ {language === 'en' ? 'Refine' : 'Refinar'}
                       </button>
@@ -690,8 +704,26 @@ export default function Home() {
                         }}
                         className="px-3 py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs rounded-lg hover:from-green-600 hover:to-emerald-600 transition shadow-sm font-semibold"
                       >
-                        ⬇️
+                        🎵
                       </button>
+                      {song.lyric && (
+                        <button
+                          onClick={() => {
+                            const blob = new Blob([song.lyric || ''], { type: 'text/plain' });
+                            const url = window.URL.createObjectURL(blob);
+                            const a = document.createElement('a');
+                            a.href = url;
+                            a.download = `${song.title}_lyrics.txt`;
+                            document.body.appendChild(a);
+                            a.click();
+                            window.URL.revokeObjectURL(url);
+                            document.body.removeChild(a);
+                          }}
+                          className="px-3 py-2 bg-gradient-to-r from-indigo-500 to-blue-500 text-white text-xs rounded-lg hover:from-indigo-600 hover:to-blue-600 transition shadow-sm font-semibold"
+                        >
+                          📝
+                        </button>
+                      )}
                       <button
                         onClick={() => {
                           const updated = songs.filter(s => s.id !== song.id);
@@ -720,7 +752,7 @@ export default function Home() {
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               placeholder={t.placeholder}
-              className="w-full h-40 p-4 border-2 border-purple-200 rounded-lg focus:border-purple-500 focus:outline-none resize-y text-sm bg-white"
+              className="w-full h-40 p-4 border-2 border-purple-200 rounded-lg focus:border-purple-500 focus:outline-none resize-y text-sm bg-white text-gray-800"
               disabled={loading}
               maxLength={500}
             />
@@ -736,6 +768,11 @@ export default function Home() {
           <p className="text-xs text-gray-500 text-center">
             {t.generationTime} ⏱️
           </p>
+
+          <div className="px-4 py-3 bg-red-50 border border-red-200 rounded-lg text-xs text-gray-700 text-center">
+            <p className="font-semibold text-red-700 mb-1">{t.oneTimeNotice}</p>
+            <p className="text-[11px] leading-snug">{t.legalDisclaimer}</p>
+          </div>
 
           <button
             onClick={generateSong}
@@ -769,30 +806,56 @@ export default function Home() {
               <audio controls className="w-full" src={audioUrl}>
                 Your browser does not support audio playback.
               </audio>
-              <button
-                onClick={downloadSong}
-                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition flex items-center justify-center space-x-2 shadow-md"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-                <span>{t.download}</span>
-              </button>
+              <div className="flex rounded-lg overflow-hidden shadow-md">
+                <button
+                  onClick={downloadSong}
+                  className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 font-semibold hover:from-purple-700 hover:to-pink-700 transition flex items-center justify-center space-x-2"
+                >
+                  <span>🎵</span>
+                  <span>{language === 'en' ? 'Download Song' : 'Descargar Canción'}</span>
+                </button>
+                {lyrics && (
+                  <>
+                    <div className="w-px bg-purple-400"></div>
+                    <button
+                      onClick={() => {
+                        const lyricsDiv = document.getElementById('lyrics-display');
+                        if (lyricsDiv) {
+                          lyricsDiv.classList.toggle('hidden');
+                        }
+                      }}
+                      className="flex-1 bg-gradient-to-r from-indigo-500 to-indigo-600 text-white py-3 font-semibold hover:from-indigo-600 hover:to-indigo-700 transition flex items-center justify-center space-x-2"
+                    >
+                      <span>👁️</span>
+                      <span>{language === 'en' ? 'View Lyrics' : 'Ver Letra'}</span>
+                    </button>
+                    <div className="w-px bg-indigo-400"></div>
+                    <button
+                      onClick={downloadLyrics}
+                      className="flex-1 bg-gradient-to-r from-purple-500 to-purple-600 text-white py-3 font-semibold hover:from-purple-600 hover:to-purple-700 transition flex items-center justify-center space-x-2"
+                    >
+                      <span>📝</span>
+                      <span>{language === 'en' ? 'Download Lyrics' : 'Descargar Letra'}</span>
+                    </button>
+                  </>
+                )}
+              </div>
+              {lyrics && (
+                <div id="lyrics-display" className="hidden p-4 bg-white border border-purple-200 rounded-lg">
+                  <p className="text-sm font-semibold text-purple-700 mb-2">📝 {language === 'en' ? 'Lyrics' : 'Letra'}</p>
+                  <pre className="text-xs text-gray-700 whitespace-pre-wrap font-sans">{lyrics}</pre>
+                </div>
+              )}
             </div>
           )}
         </div>
 
-        <div className="mt-4 px-4 py-3 bg-red-50 border border-red-200 rounded-lg text-xs text-gray-700 text-center">
-          <p className="font-semibold text-red-700 mb-1">{t.oneTimeNotice}</p>
-          <p className="text-[11px] leading-snug">{t.legalDisclaimer}</p>
-        </div>
-
         <div className="mt-6 pt-4 border-t border-gray-200 text-center">
           <p className="text-xs text-gray-500">
-            <span className="font-semibold text-purple-600">❤️ Created by Jessie ❤️</span>
+            <span className="font-semibold text-purple-600">{t.footerLine1}</span>
           </p>
           <p className="text-xs text-gray-500 mt-1">
-            <span className="font-semibold text-purple-600">Guidance from Dr. Lee</span>
+            <span className="font-semibold text-purple-600">{t.footerLine2}</span>
           </p>
         </div>
       </div>

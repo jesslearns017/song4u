@@ -66,3 +66,10 @@ body {
   animation: float-slow 10s ease-in-out infinite;
   animation-delay: 1s;
 }
+
+/* Darker placeholder text for better visibility */
+textarea::placeholder,
+input::placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
