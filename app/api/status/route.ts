@@ -8,6 +8,10 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Task ID is required' }, { status: 400 });
   }
 
+  if (!/^[a-zA-Z0-9_-]{1,100}$/.test(taskId)) {
+    return NextResponse.json({ error: 'Invalid task ID' }, { status: 400 });
+  }
+
   try {
     const checkResponse = await fetch(
       `https://api.sunoapi.org/api/v1/generate/record-info?taskId=${taskId}`,

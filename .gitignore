@@ -25,3 +25,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# private notes and scan results
+NOTFORGITHUB/
+.codesight/
+*.scan.json
+Scan results for songs4u.cc.html
+Scan results for songs4u.cc_files/
